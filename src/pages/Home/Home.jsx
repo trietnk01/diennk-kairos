@@ -2,6 +2,7 @@ import React from "react";
 import "assets/frontpage/frontpage-main.scss";
 import logo from "assets/images/logo.svg";
 import HomeIcon from "assets/images/home-icon.svg";
+import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="relative font-frontpage-global">
@@ -21,10 +22,14 @@ function Home() {
       <div className="kairos-container relative flex mx-auto">
         <div className="col-left">
           <div className="flex justify-between items-center">
-            <img src={logo} />
+            <Link to="/">
+              <img src={logo} />
+            </Link>
             <div className="flex" style={{ columnGap: "10px" }}>
               <img src={HomeIcon} />
-              <span className="front-page-text-home">Home</span>
+              <Link to="/" className="front-page-text-home">
+                Home
+              </Link>
             </div>
           </div>
           <div className="banner-slogan">
