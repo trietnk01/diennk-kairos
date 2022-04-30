@@ -1,0 +1,36 @@
+.box-banner {
+  background-image: url("#{$images}/banner.svg");
+  background-position-y: top;
+  background-position-x: right;
+  background-repeat: no-repeat;
+  height: 656px;
+  .banner-header {
+    width: 915px;
+    height: 36px;
+    background-color: $blue;
+    .item-banner-header {
+      &__text {
+        font-family: $f_Roboto;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.col-left {
+  width: 484px;
+  padding-top: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
+  .front-page-text-home {
+    font-family: $f_NotoSans_Bold;
+    font-size: 14px;
+  }
+  .banner-slogan {
+    margin-top: 50px;
+    color: $blue;
+    font-size: 56px;
+    font-family: $f_NotoSans_Bold;
+  }
+}
