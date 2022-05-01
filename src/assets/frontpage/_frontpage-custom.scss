@@ -1,14 +1,15 @@
 .box-banner {
   background-image: url("#{$images}/banner.svg");
-  background-position-y: top;
-  background-position-x: right;
-  background-repeat: no-repeat;
   height: 656px;
-  .banner-header {
+  .header {
     width: 915px;
     height: 36px;
     background-color: $blue;
-    .item-banner-header {
+    .item {
+      margin-left: 100px;
+      &:first-child {
+        margin-left: 0;
+      }
       &__text {
         font-family: $f_Roboto;
         font-size: 14px;
@@ -20,7 +21,7 @@
 
 .col-left {
   width: 484px;
-  padding-top: 50px;
+  padding-top: 60px;
   padding-left: 30px;
   padding-right: 30px;
   .front-page-text-home {
@@ -32,5 +33,38 @@
     color: $blue;
     font-size: 56px;
     font-family: $f_NotoSans_Bold;
+  }
+}
+.banner-menu {
+  padding-top: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+  .menu {
+    li {
+      margin-right: 60px;
+      &:last-child {
+        margin-right: 0;
+      }
+      a {
+        font-size: 14px;
+      }
+    }
+  }
+  .tab-now-future {
+    margin-top: 100px;
+    li {
+      margin-left: 60px;
+      &:first-child {
+        margin-left: 0;
+      }
+      button {
+        font-size: 22px;
+        font-family: $f_NotoSans_SemiBold;
+        opacity: 0.5;
+        &.active {
+          border-bottom: 1px solid #fff;
+        }
+      }
+    }
   }
 }
