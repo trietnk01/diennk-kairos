@@ -7,6 +7,23 @@ function Home() {
   return (
     <div className="font-frontpage-global">
       <div className="relative box-banner bg-no-repeat bg-right-top absolute left-0 top-0 w-full">
+        <div className="header flex text-white items-center justify-center absolute right-0 top-0">
+          <div className="item">
+            <Link className="item__text" to="/">
+              EN
+            </Link>
+          </div>
+          <div className="item">
+            <Link className="item__text" to="/">
+              Company
+            </Link>
+          </div>
+          <div className="item">
+            <Link className="item__text" to="/">
+              Partner Market Place
+            </Link>
+          </div>
+        </div>
         <div className="kairos-container flex mx-auto h-full">
           <div className="col-left relative">
             <div className="absolute banner-slogan items-center top-0 left-0 flex w-full h-full">
@@ -89,23 +106,6 @@ function Home() {
                 <div className="now-future-item__text text-white text-center">countries</div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="header flex text-white items-center justify-center absolute right-0 top-0">
-          <div className="item">
-            <Link className="item__text" to="/">
-              EN
-            </Link>
-          </div>
-          <div className="item">
-            <Link className="item__text" to="/">
-              Company
-            </Link>
-          </div>
-          <div className="item">
-            <Link className="item__text" to="/">
-              Partner Market Place
-            </Link>
           </div>
         </div>
       </div>
