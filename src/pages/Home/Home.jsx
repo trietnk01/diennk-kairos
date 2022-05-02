@@ -4,6 +4,9 @@ import Logo from "assets/images/logo.svg";
 import HomeIcon from "assets/images/home-icon.svg";
 import { Link } from "react-router-dom";
 import PCITCloud from "assets/images/pc-it-cloud.svg";
+import Accounting from "assets/images/accounting.svg";
+import HRAdmin from "assets/images/hr-admin.svg";
+import SaleAdmin from "assets/images/sales-youtube.svg";
 function Home() {
   return (
     <div className="font-frontpage-global">
@@ -130,16 +133,124 @@ function Home() {
           You are now viewing an <strong>IT Software</strong> that has been verified by <strong>over 1 million users.</strong>
         </p>
       </div>
-      <div className="big-screen mx-auto p-top-78 p-bottom-78 cloud-service text-center">
+      <div className="big-screen mx-auto p-top-80 cloud-service text-center">
         <p style={{ fontSize: "48px", lineHeight: "65px", color: "#181949" }}>
           <strong>IT CLOUD SEA’S IT SERVICE</strong>
         </p>
       </div>
-      <div className="box-wrapper mx-auto flex justify-between">
-        <div className="w-1/2">
+      <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
+        <div className="w-3/5">
           <img src={PCITCloud} />
         </div>
-        <div className="w-1/2"></div>
+        <div className="flex w-2/5 flex-col items-center justify-center">
+          <div className="text-center job-name">ASSETS</div>
+          <div className="job-lst">
+            <div className="job-item flex flex-col items-center">
+              <div className="text-center job-description m-top-16">Inventory Management</div>
+              <div className="job-position w-3/5 text-white m-top-16 text-center">G-Book</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="background-light-gray mx-auto big-screen p-top-80 p-bottom-80">
+        <div className="box-wrapper   mx-auto flex justify-between">
+          <div className="flex w-3/5 flex-col items-center justify-center">
+            <div className="text-center job-name">Accounting</div>
+            <div className="job-lst">
+              <div className="job-item flex flex-col items-center">
+                <div className="text-center job-description m-top-16">Accounting</div>
+                <div className="job-position text-white m-top-16 text-center">G-Book</div>
+              </div>
+            </div>
+          </div>
+          <div className="w-2/5">
+            <img src={Accounting} />
+          </div>
+        </div>
+      </div>
+      <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
+        <div className="w-3/5">
+          <img src={HRAdmin} />
+        </div>
+        <div className="flex w-2/5 flex-col items-center justify-center">
+          <div className="text-center job-name">HR & Admin</div>
+          <div className="job-lst">
+            <div className="job-item flex flex-col items-center">
+              <div className="text-center job-description m-top-16">Webmail</div>
+              <div className="job-position text-white m-top-16 text-center">E-office</div>
+            </div>
+            <div className="job-item flex flex-col items-center">
+              <div className="text-center job-description m-top-16">E- Apporval</div>
+              <div className="job-position text-white m-top-16 text-center">E-office</div>
+            </div>
+            <div className="job-item flex flex-col items-center">
+              <div className="text-center job-description m-top-16">E- Document</div>
+              <div className="job-position text-white m-top-16 text-center">E-office</div>
+            </div>
+            <div className="job-item flex flex-col items-center">
+              <div className="text-center job-description m-top-16">E- Check in.out</div>
+              <div className="job-position text-white m-top-16 text-center">E-office</div>
+            </div>
+            <div className="job-item flex flex-col items-center">
+              <div className="text-center job-description m-top-16">Co-work/Project</div>
+              <div className="job-position text-white m-top-16 text-center">E-office</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="background-light-gray mx-auto big-screen p-top-80 p-bottom-80">
+        <div className="box-wrapper   mx-auto flex justify-between">
+          <div className="flex w-3/5 flex-col items-center justify-center">
+            <div className="text-center job-name">Sales</div>
+            <div className="job-lst">
+              <div className="job-item flex flex-col items-center">
+                <div className="text-center job-description m-top-16">Create Homepage Youtube & Instagram</div>
+                <div className="job-position text-white m-top-16 text-center">Fieldmake</div>
+              </div>
+            </div>
+          </div>
+          <div className="w-2/5">
+            <img src={SaleAdmin} />
+          </div>
+        </div>
+      </div>
+      <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
+        <div className="w-3/5">
+          <img src={PCITCloud} />
+        </div>
+        <div className="flex w-2/5 flex-col items-center justify-center">
+          <div className="text-center job-name">Customer</div>
+          <div className="job-lst">
+            <div className="job-item flex flex-col items-center">
+              <div className="text-center job-description m-top-16">Customer Request Management</div>
+              <div className="job-position w-3/5 text-white m-top-16 text-center">OQUFIE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="background-light-gray mx-auto big-screen p-top-80 p-bottom-80">
+        <div className="box-wrapper mx-auto flex justify-between">
+          <div className="flex w-3/5 flex-col items-center justify-center">
+            <div className="text-center job-name">Security</div>
+            <div className="job-lst">
+              <div className="job-item flex flex-col items-center">
+                <div className="text-center job-description m-top-16">SSL server</div>
+                <div className="job-position text-white m-top-16 text-center">SECTIGO</div>
+              </div>
+            </div>
+          </div>
+          <div className="w-2/5">
+            <img src={SaleAdmin} />
+          </div>
+        </div>
+      </div>
+      <div className="big-screen mx-auto p-top-80 p-bottom-80 background-light-green">
+        <div className="wrapper-content-bottom mx-auto flex">
+          <div className="content-bottom-item"></div>
+          <div className="content-bottom-item"></div>
+          <div className="content-bottom-item"></div>
+          <div className="content-bottom-item"></div>
+        </div>
       </div>
     </div>
   );
