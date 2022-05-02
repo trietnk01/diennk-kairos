@@ -6,22 +6,10 @@
   .m-bottom-#{$k} {
     margin-bottom: $k + px;
   }
-  .m-left-#{$k} {
-    margin-left: $k + px;
-  }
-  .m-right-#{$k} {
-    margin-right: $k + px;
-  }
   .p-top-#{$k} {
     padding-top: $k + px;
   }
   .p-bottom-#{$k} {
     padding-bottom: $k + px;
-  }
-  .p-left-#{$k} {
-    padding-left: $k + px;
-  }
-  .p-right-#{$k} {
-    padding-right: $k + px;
   }
 }

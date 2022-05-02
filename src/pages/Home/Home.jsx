@@ -22,12 +22,12 @@ function Home() {
                   EN
                 </Link>
               </div>
-              <div className="header-top-item m-left-100">
+              <div className="header-top-item">
                 <Link className="header-top-item__text text-white" to="/">
                   Company
                 </Link>
               </div>
-              <div className="header-top-item m-left-100">
+              <div className="header-top-item">
                 <Link className="header-top-item__text text-white" to="/">
                   Partner Market Place
                 </Link>
@@ -66,27 +66,27 @@ function Home() {
                     Auto Homepage
                   </Link>
                 </li>
-                <li className="inline-block m-left-72">
+                <li className="inline-block">
                   <Link className="text-white" to="/">
                     Sales
                   </Link>
                 </li>
-                <li className="inline-block m-left-72">
+                <li className="inline-block">
                   <Link className="text-white" to="/">
                     CRM
                   </Link>
                 </li>
-                <li className="inline-block m-left-72">
+                <li className="inline-block">
                   <Link className="text-white" to="/">
                     Eletronic office
                   </Link>
                 </li>
-                <li className="inline-block m-left-72">
+                <li className="inline-block">
                   <Link className="text-white" to="/">
                     Cloud ERP
                   </Link>
                 </li>
-                <li className="inline-block m-left-72">
+                <li className="inline-block">
                   <Link className="text-white" to="/">
                     SSL
                   </Link>
@@ -98,7 +98,7 @@ function Home() {
                     Now
                   </button>
                 </li>
-                <li className="inline-block m-left-20">
+                <li className="inline-block">
                   <button type="button" className="text-white">
                     Future
                   </button>
@@ -138,16 +138,18 @@ function Home() {
           <strong>IT CLOUD SEA’S IT SERVICE</strong>
         </p>
       </div>
-      <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
-        <div className="w-3/5">
-          <img src={PCITCloud} />
-        </div>
-        <div className="flex w-2/5 flex-col items-center justify-center">
-          <div className="text-center job-name">ASSETS</div>
-          <div className="job-lst">
-            <div className="job-item flex flex-col items-center">
-              <div className="text-center job-description m-top-16">Inventory Management</div>
-              <div className="job-position w-3/5 text-white m-top-16 text-center">G-Book</div>
+      <div className="big-screen mx-auto">
+        <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
+          <div className="w-3/5">
+            <img src={PCITCloud} />
+          </div>
+          <div className="flex w-2/5 flex-col items-center justify-center">
+            <div className="text-center job-name">ASSETS</div>
+            <div className="job-lst">
+              <div className="job-item flex flex-col items-center">
+                <div className="text-center job-description m-top-16">Inventory Management</div>
+                <div className="job-position w-3/5 text-white m-top-16 text-center">G-Book</div>
+              </div>
             </div>
           </div>
         </div>
@@ -168,32 +170,34 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
-        <div className="w-3/5">
-          <img src={HRAdmin} />
-        </div>
-        <div className="flex w-2/5 flex-col items-center justify-center">
-          <div className="text-center job-name">HR & Admin</div>
-          <div className="job-lst">
-            <div className="job-item flex flex-col items-center">
-              <div className="text-center job-description m-top-16">Webmail</div>
-              <div className="job-position text-white m-top-16 text-center">E-office</div>
-            </div>
-            <div className="job-item flex flex-col items-center">
-              <div className="text-center job-description m-top-16">E- Apporval</div>
-              <div className="job-position text-white m-top-16 text-center">E-office</div>
-            </div>
-            <div className="job-item flex flex-col items-center">
-              <div className="text-center job-description m-top-16">E- Document</div>
-              <div className="job-position text-white m-top-16 text-center">E-office</div>
-            </div>
-            <div className="job-item flex flex-col items-center">
-              <div className="text-center job-description m-top-16">E- Check in.out</div>
-              <div className="job-position text-white m-top-16 text-center">E-office</div>
-            </div>
-            <div className="job-item flex flex-col items-center">
-              <div className="text-center job-description m-top-16">Co-work/Project</div>
-              <div className="job-position text-white m-top-16 text-center">E-office</div>
+      <div className="big-screen mx-auto">
+        <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
+          <div className="w-3/5">
+            <img src={HRAdmin} />
+          </div>
+          <div className="flex w-2/5 flex-col items-center justify-center">
+            <div className="text-center job-name">HR & Admin</div>
+            <div className="job-lst">
+              <div className="job-item flex flex-col items-center">
+                <div className="text-center job-description m-top-16">Webmail</div>
+                <div className="job-position text-white m-top-16 text-center">E-office</div>
+              </div>
+              <div className="job-item flex flex-col items-center">
+                <div className="text-center job-description m-top-16">E- Apporval</div>
+                <div className="job-position text-white m-top-16 text-center">E-office</div>
+              </div>
+              <div className="job-item flex flex-col items-center">
+                <div className="text-center job-description m-top-16">E- Document</div>
+                <div className="job-position text-white m-top-16 text-center">E-office</div>
+              </div>
+              <div className="job-item flex flex-col items-center">
+                <div className="text-center job-description m-top-16">E- Check in.out</div>
+                <div className="job-position text-white m-top-16 text-center">E-office</div>
+              </div>
+              <div className="job-item flex flex-col items-center">
+                <div className="text-center job-description m-top-16">Co-work/Project</div>
+                <div className="job-position text-white m-top-16 text-center">E-office</div>
+              </div>
             </div>
           </div>
         </div>
@@ -214,16 +218,18 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
-        <div className="w-3/5">
-          <img src={PCITCloud} />
-        </div>
-        <div className="flex w-2/5 flex-col items-center justify-center">
-          <div className="text-center job-name">Customer</div>
-          <div className="job-lst">
-            <div className="job-item flex flex-col items-center">
-              <div className="text-center job-description m-top-16">Customer Request Management</div>
-              <div className="job-position w-3/5 text-white m-top-16 text-center">OQUFIE</div>
+      <div className="big-screen mx-auto">
+        <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
+          <div className="w-3/5">
+            <img src={PCITCloud} />
+          </div>
+          <div className="flex w-2/5 flex-col items-center justify-center">
+            <div className="text-center job-name">Customer</div>
+            <div className="job-lst">
+              <div className="job-item flex flex-col items-center">
+                <div className="text-center job-description m-top-16">Customer Request Management</div>
+                <div className="job-position w-3/5 text-white m-top-16 text-center">OQUFIE</div>
+              </div>
             </div>
           </div>
         </div>
@@ -244,12 +250,123 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="big-screen mx-auto p-top-80 p-bottom-80 background-light-green">
-        <div className="wrapper-content-bottom mx-auto flex">
-          <div className="content-bottom-item"></div>
-          <div className="content-bottom-item"></div>
-          <div className="content-bottom-item"></div>
-          <div className="content-bottom-item"></div>
+      <div className="big-screen mx-auto p-top-120 p-bottom-120 background-light-green">
+        <div className="wrapper-content-bottom mx-auto flex justify-between">
+          <div className="content-bottom-item" style={{ backgroundColor: "#fff" }}>
+            <div className="title" style={{ color: "#181949" }}>
+              Free Test
+            </div>
+            <div className="description" style={{ color: "#374754" }}>
+              Organize across all apps by hand
+            </div>
+            <div className="flex detail m-top-20 items-center">
+              <div className="price" style={{ fontSize: "64px", color: "#111111" }}>
+                0
+              </div>
+              <div className="unit-detail">
+                <div className="unit" style={{ color: "#252B42" }}>
+                  $
+                </div>
+                <div className="per-month" style={{ color: "#374754" }}>
+                  Per Month
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="content-bottom-item" style={{ backgroundColor: "#fff" }}>
+            <div className="title" style={{ color: "#181949" }}>
+              Low Price
+            </div>
+            <div className="description" style={{ color: "#374754" }}>
+              Monthly Fixed Amount
+            </div>
+            <div className="flex detail m-top-20 items-center">
+              <div className="price" style={{ fontSize: "36px", color: "#111111" }}>
+                200.000
+              </div>
+              <div className="unit-detail 3-10">
+                <div className="unit" style={{ color: "#252B42" }}>
+                  $
+                </div>
+                <div className="per-month" style={{ color: "#374754" }}>
+                  Per Month
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="content-bottom-item" style={{ backgroundColor: "#fff" }}>
+            <div className="title" style={{ color: "#181949" }}>
+              Easy Using Methods
+            </div>
+            <div className="description" style={{ color: "#374754" }}>
+              Various Manuals
+            </div>
+            <div className="flex detail m-top-20 items-center">
+              <div className="price" style={{ fontSize: "36px", color: "#111111" }}>
+                200.000
+              </div>
+              <div className="unit-detail">
+                <div className="unit" style={{ color: "#252B42" }}>
+                  $
+                </div>
+                <div className="per-month" style={{ color: "#374754" }}>
+                  Per Month
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="content-bottom-item" style={{ backgroundColor: "#E6367E" }}>
+            <div className="title" style={{ color: "#FFF" }}>
+              Verified IT Service
+            </div>
+            <div className="description" style={{ color: "#FFF" }}>
+              On sale in 4 countries
+            </div>
+            <div className="flex detail m-top-20 items-center">
+              <div className="price" style={{ fontSize: "36px", color: "#FFF" }}>
+                300.000
+              </div>
+              <div className="unit-detail">
+                <div className="unit" style={{ color: "#FFF" }}>
+                  $
+                </div>
+                <div className="per-month" style={{ color: "#FFF" }}>
+                  Per Month
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="big-screen mx-auto footer">
+        <div className="footer-wrapper flex mx-auto flex-wrap justify-between">
+          <div className="footer-item p-top-40 p-bottom-40">
+            <h3 className="title m-bottom-20">Vietnam Office</h3>
+            <div className="info">
+              <p>14F, APtower, Dien Bien Phu street, district 3, Ho Chi Minh city</p>
+              <p>Business resigtration: 0315421202</p>
+              <p>
+                Tel: 028-3520-2367 &nbsp;&nbsp;<Link to="/">sales@dkinno.com</Link>
+              </p>
+              <p>Copyright 2021 DaouKiwoom Innocation C0., Ltd</p>
+            </div>
+          </div>
+          <div className="footer-item p-top-40 p-bottom-40">
+            <h3 className="title m-bottom-20">Indonesia Office</h3>
+            <div className="info">
+              <p>Menara Mandiri II, Jl. jend. Sudirman No.54-55, South Jakarta, DKI Jakarta 12190, Indonsia</p>
+              <p>Tel: +62-21-5082-0038</p>
+            </div>
+          </div>
+          <div className="footer-item p-top-40 p-bottom-40">
+            <h3 className="title m-bottom-20">Korea Office</h3>
+            <div className="info">
+              <p>
+                5th Fl, C-dong, PDC, 242, Pangyo-ro, Bundang-gu,
+                <br /> Seongnam-si, Gyeonggi-do, Korea
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

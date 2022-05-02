@@ -1,14 +1,18 @@
 .banner {
   height: 656px;
   .header-right {
-    width: $banner_right_width;
+    width: 60.3%;
     background-image: url("#{$images}/banner.svg");
   }
   .header-top {
     background-color: $blue;
     height: 36px;
-    width: $banner_right_width;
+    width: 60.3%;
     .header-top-item {
+      margin-left: 100px;
+      &:first-child {
+        margin-left: 0;
+      }
       &__text {
         font-family: $f_Roboto;
         font-size: 14px;
@@ -42,6 +46,10 @@
     margin-top: 60px;
     .menu {
       li {
+        margin-left: 72px;
+        &:first-child {
+          margin-left: 0;
+        }
         a {
           font-size: 14px;
           line-height: 19px;
@@ -71,7 +79,7 @@
           margin-left: 0;
         }
         &__number {
-          color: $lightBlue;
+          color: #cfe5ff;
           font-size: 64px;
           font-family: $f_NotoSans_Bold;
           line-height: 88px;
@@ -85,20 +93,20 @@
   }
 }
 .background-pink {
-  background-color: $pinkLight;
+  background-color: #ffd1e8;
   strong,
   b {
     font-family: $f_NotoSans_Bold;
   }
 }
 .box-wrapper {
-  max-width: $wrapper_width;
+  width: 59%;
 }
 .background-light-gray {
-  background-color: $lightGrey;
+  background-color: #f4f4f4;
 }
 .background-light-green {
-  background-color: $lightGreen;
+  background-color: #f3f9ff;
 }
 .cloud-service {
   strong,
@@ -131,5 +139,76 @@
   }
 }
 .wrapper-content-bottom {
-  width: 1200px;
+  width: 82%;
+  .content-bottom-item {
+    border-radius: 10px;
+    padding: 40px 36px;
+    border: 1px solid #dedede;
+    box-shadow: 0px 13px 19px 0px #00000012;
+    margin-left: 35px;
+    width: 30%;
+    &:first-child {
+      margin-left: 0;
+    }
+    .title {
+      font-family: $f_Roboto;
+      font-weight: 700;
+      font-size: 22px;
+    }
+    .description {
+      font-family: $f_Roboto;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .detail {
+      .price {
+        font-family: $f_NotoSans_Bold;
+        line-height: 65px;
+      }
+      .unit-detail {
+        margin-left: 10px;
+        .unit {
+          font-family: $f_Roboto;
+          font-weight: 700;
+          font-size: 22px;
+          line-height: 33px;
+        }
+        .per-month {
+          font-family: $f_Roboto;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 18px;
+        }
+      }
+    }
+  }
+}
+.footer {
+  border-top: 1px solid #99999975;
+  background-color: #f3f9ff;
+  .footer-wrapper {
+    width: 84%;
+    .footer-item {
+      border-left: 1px solid #99999975;
+      padding-left: 40px;
+      padding-right: 40px;
+      width: 33%;
+      &:first-child {
+        border-left: 0;
+      }
+      .title {
+        font-family: $f_NotoSans_Medium;
+        font-size: 22px;
+        line-height: 30px;
+        color: $blue;
+      }
+      .info {
+        font-size: 14px;
+        color: $grey;
+        p {
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
 }
