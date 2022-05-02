@@ -1,18 +1,14 @@
 .banner {
   height: 656px;
   .header-right {
-    width: 915px;
+    width: $banner_right_width;
     background-image: url("#{$images}/banner.svg");
   }
   .header-top {
     background-color: $blue;
     height: 36px;
-    width: 915px;
+    width: $banner_right_width;
     .header-top-item {
-      margin-left: 100px;
-      &:first-child {
-        margin-left: 0;
-      }
       &__text {
         font-family: $f_Roboto;
         font-size: 14px;
@@ -21,40 +17,31 @@
       }
     }
   }
-
-  .banner-slogan {
+  .banner-slogan-left {
     color: $blue;
     font-size: 56px;
     line-height: 75px;
     font-family: $f_NotoSans_Bold;
-    padding-left: 30px;
-    padding-right: 30px;
+    width: 35%;
   }
   .barro {
     transform: translateX(-50%);
   }
   .col-left {
-    width: 484px;
+    width: 35%;
     padding-top: 60px;
-    padding-left: 30px;
-    padding-right: 30px;
-
-    .front-page-text-home {
+    .banner-text-home {
       font-family: $f_NotoSans_Bold;
       font-size: 14px;
       line-height: 19px;
+      margin-left: 10px;
     }
   }
-  .banner-menu {
+  .col-right {
+    width: 59%;
     margin-top: 60px;
-    padding-left: 33px;
-    padding-right: 33px;
     .menu {
       li {
-        margin-left: 72px;
-        &:first-child {
-          margin-left: 0;
-        }
         a {
           font-size: 14px;
           line-height: 19px;
@@ -62,12 +49,7 @@
       }
     }
     .tab-now-future {
-      margin-top: 100px;
       li {
-        margin-left: 20px;
-        &:first-child {
-          margin-left: 0;
-        }
         button {
           font-size: 22px;
           font-family: $f_NotoSans_SemiBold;
@@ -83,7 +65,6 @@
       }
     }
     .now-future-panel {
-      margin-top: 30px;
       .now-future-item {
         margin-left: 106px;
         &:first-child {
@@ -102,4 +83,10 @@
       }
     }
   }
+}
+.background-pink {
+  background-color: $pinkLight;
+}
+.box-wrapper {
+  max-width: 895px;
 }
