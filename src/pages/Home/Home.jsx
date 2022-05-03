@@ -7,36 +7,46 @@ import PCITCloud from "assets/images/pc-it-cloud.svg";
 import Accounting from "assets/images/accounting.svg";
 import HRAdmin from "assets/images/hr-admin.svg";
 import SaleAdmin from "assets/images/sales-youtube.svg";
+import VectorDown from "assets/images/vector-down.svg";
 function Home() {
+  const [tabName, setTabName] = React.useState("now");
+  const handleClickTab = (title) => () => {
+    setTabName(title);
+  };
   return (
     <div className="font-frontpage-global">
       <div className="relative banner">
-        <div className="big-screen flex justify-end mx-auto h-full">
+        <div className="big-screen flex flex-wrap justify-end mx-auto h-full">
           <div className="header-right"></div>
         </div>
         <div className="absolute w-full top-0 left-0 z-30">
-          <div className="big-screen flex justify-end mx-auto">
-            <div className="header-top flex justify-center items-center">
-              <div className="header-top-item">
-                <Link className="header-top-item__text text-white" to="/">
-                  EN
-                </Link>
-              </div>
-              <div className="header-top-item">
-                <Link className="header-top-item__text text-white" to="/">
-                  Company
-                </Link>
-              </div>
-              <div className="header-top-item">
-                <Link className="header-top-item__text text-white" to="/">
-                  Partner Market Place
-                </Link>
+          <div className="big-screen flex flex-wrap justify-end mx-auto">
+            <div className="header-top">
+              <div className="header-wrapper flex flex-wrap justify-between items-center mx-auto">
+                <div className="header-top-item flex justify-between flex-wrap items-center">
+                  <button type="button" className="header-top-item__text text-white">
+                    EN
+                  </button>
+                  <img src={VectorDown} className="vector-down" />
+                </div>
+                <div className="header-top-item flex justify-between flex-wrap items-center">
+                  <button className="header-top-item__text text-white" to="/">
+                    Company
+                  </button>
+                  <img src={VectorDown} className="vector-down" />
+                </div>
+                <div className="header-top-item flex justify-between flex-wrap items-center">
+                  <button className="header-top-item__text text-white" to="/">
+                    Partner Market Place
+                  </button>
+                  <img src={VectorDown} className="vector-down" />
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="absolute top-0 left-0 z-10 w-full h-full">
-          <div className="kairos-container flex items-center justify-start h-full mx-auto">
+        <div className="slogan-asia-it absolute top-0 left-0 z-10 w-full h-full">
+          <div className="kairos-container flex flex-wrap items-center justify-start h-full mx-auto">
             <div className="banner-slogan-left">
               Asia IT
               <br />
@@ -45,14 +55,14 @@ function Home() {
           </div>
         </div>
         <div className="absolute top-0 left-0 w-full z-20">
-          <div className="kairos-container flex mx-auto justify-between">
+          <div className="kairos-container logo-wrapper flex mx-auto justify-between flex-wrap">
             <div className="col-left">
-              <div className="flex justify-between">
+              <div className="logo-home-text flex flex-wrap justify-between">
                 <Link to="/">
                   <img src={Logo} />
                 </Link>
-                <div className="flex items-center">
-                  <img src={HomeIcon} />
+                <div className="home-text-icon flex flex-wrap justify-between items-center">
+                  <img src={HomeIcon} className="home-icon" />
                   <Link to="/" className="banner-text-home">
                     Home
                   </Link>
@@ -60,51 +70,51 @@ function Home() {
               </div>
             </div>
             <div className="col-right">
-              <ul className="menu">
-                <li className="inline-block">
+              <div className="menu flex flex-wrap justify-between">
+                <div className="menu-item">
                   <Link className="text-white" to="/">
                     Auto Homepage
                   </Link>
-                </li>
-                <li className="inline-block">
+                </div>
+                <div className="menu-item">
                   <Link className="text-white" to="/">
                     Sales
                   </Link>
-                </li>
-                <li className="inline-block">
+                </div>
+                <div className="menu-item">
                   <Link className="text-white" to="/">
                     CRM
                   </Link>
-                </li>
-                <li className="inline-block">
+                </div>
+                <div className="menu-item">
                   <Link className="text-white" to="/">
                     Eletronic office
                   </Link>
-                </li>
-                <li className="inline-block">
+                </div>
+                <div className="menu-item">
                   <Link className="text-white" to="/">
                     Cloud ERP
                   </Link>
-                </li>
-                <li className="inline-block">
+                </div>
+                <div className="menu-item">
                   <Link className="text-white" to="/">
                     SSL
                   </Link>
-                </li>
-              </ul>
+                </div>
+              </div>
               <ul className="tab-now-future m-top-100 text-center">
                 <li className="inline-block">
-                  <button type="button" className="text-white active">
+                  <button type="button" className={`text-white ${tabName === "now" ? "active" : ""}`} onClick={handleClickTab("now")}>
                     Now
                   </button>
                 </li>
                 <li className="inline-block">
-                  <button type="button" className="text-white">
+                  <button type="button" className={`text-white ${tabName === "future" ? "active" : ""}`} onClick={handleClickTab("future")}>
                     Future
                   </button>
                 </li>
               </ul>
-              <div className="now-future-panel m-top-30 flex justify-center">
+              <div className="now-future-panel m-top-30 flex flex-wrap justify-between mx-auto">
                 <div className="now-future-item">
                   <div className="now-future-item__number text-center">6</div>
                   <div className="now-future-item__text text-white text-center">
@@ -139,7 +149,7 @@ function Home() {
         </p>
       </div>
       <div className="big-screen mx-auto">
-        <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
+        <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex flex-wrap justify-between">
           <div className="w-3/5">
             <img src={PCITCloud} />
           </div>
@@ -155,7 +165,7 @@ function Home() {
         </div>
       </div>
       <div className="background-light-gray mx-auto big-screen p-top-80 p-bottom-80">
-        <div className="box-wrapper   mx-auto flex justify-between">
+        <div className="box-wrapper flex-wrap  mx-auto flex justify-between">
           <div className="flex w-3/5 flex-col items-center justify-center">
             <div className="text-center job-name">Accounting</div>
             <div className="job-lst">
@@ -171,7 +181,7 @@ function Home() {
         </div>
       </div>
       <div className="big-screen mx-auto">
-        <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
+        <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex flex-wrap justify-between">
           <div className="w-3/5">
             <img src={HRAdmin} />
           </div>
@@ -203,7 +213,7 @@ function Home() {
         </div>
       </div>
       <div className="background-light-gray mx-auto big-screen p-top-80 p-bottom-80">
-        <div className="box-wrapper   mx-auto flex justify-between">
+        <div className="box-wrapper   mx-auto flex justify-between flex-wrap">
           <div className="flex w-3/5 flex-col items-center justify-center">
             <div className="text-center job-name">Sales</div>
             <div className="job-lst">
@@ -219,7 +229,7 @@ function Home() {
         </div>
       </div>
       <div className="big-screen mx-auto">
-        <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex justify-between">
+        <div className="box-wrapper p-top-80 p-bottom-80 mx-auto flex flex-wrap justify-between">
           <div className="w-3/5">
             <img src={PCITCloud} />
           </div>
@@ -235,7 +245,7 @@ function Home() {
         </div>
       </div>
       <div className="background-light-gray mx-auto big-screen p-top-80 p-bottom-80">
-        <div className="box-wrapper mx-auto flex justify-between">
+        <div className="box-wrapper mx-auto flex flex-wrap justify-between">
           <div className="flex w-3/5 flex-col items-center justify-center">
             <div className="text-center job-name">Security</div>
             <div className="job-lst">
@@ -251,7 +261,7 @@ function Home() {
         </div>
       </div>
       <div className="big-screen mx-auto p-top-120 p-bottom-120 background-light-green">
-        <div className="wrapper-content-bottom mx-auto flex justify-between">
+        <div className="wrapper-content-bottom mx-auto flex justify-between flex-wrap">
           <div className="content-bottom-item" style={{ backgroundColor: "#fff" }}>
             <div className="title" style={{ color: "#181949" }}>
               Free Test
@@ -280,7 +290,7 @@ function Home() {
             <div className="description" style={{ color: "#374754" }}>
               Monthly Fixed Amount
             </div>
-            <div className="flex detail m-top-20 items-center">
+            <div className="flex flex-wrap detail m-top-20 items-center">
               <div className="price" style={{ fontSize: "36px", color: "#111111" }}>
                 200.000
               </div>
@@ -301,7 +311,7 @@ function Home() {
             <div className="description" style={{ color: "#374754" }}>
               Various Manuals
             </div>
-            <div className="flex detail m-top-20 items-center">
+            <div className="flex flex-wrap detail m-top-20 items-center">
               <div className="price" style={{ fontSize: "36px", color: "#111111" }}>
                 200.000
               </div>
@@ -322,7 +332,7 @@ function Home() {
             <div className="description" style={{ color: "#FFF" }}>
               On sale in 4 countries
             </div>
-            <div className="flex detail m-top-20 items-center">
+            <div className="flex flex-wrap detail m-top-20 items-center">
               <div className="price" style={{ fontSize: "36px", color: "#FFF" }}>
                 300.000
               </div>
@@ -339,7 +349,7 @@ function Home() {
         </div>
       </div>
       <div className="big-screen mx-auto footer">
-        <div className="footer-wrapper flex mx-auto flex-wrap justify-between">
+        <div className="footer-wrapper flex  mx-auto flex-wrap justify-between">
           <div className="footer-item p-top-40 p-bottom-40">
             <h3 className="title m-bottom-20">Vietnam Office</h3>
             <div className="info">
