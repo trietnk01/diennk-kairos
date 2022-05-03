@@ -25,6 +25,24 @@
         width: 100%;
       }
       .header-top-item {
+        .box-language {
+          top: 25px;
+          border-top: 1px solid #262768;
+          border-left: 1px solid #262768;
+          .language-item {
+            background-color: $blue;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #262768;
+            border-right: 1px solid #262768;
+            transition-duration: 400ms;
+            &:hover {
+              background-color: #001f6b;
+            }
+          }
+        }
         &__text {
           font-family: $f_Roboto;
           font-size: 14px;
@@ -250,6 +268,8 @@
     border: 1px solid #dedede;
     box-shadow: 0px 13px 19px 0px #00000012;
     width: 23%;
+    background-color: #fff;
+    transition-duration: 400ms;
     @media only screen and (max-width: 1024px) {
       width: 48%;
       margin-bottom: 40px;
@@ -261,16 +281,19 @@
       font-family: $f_Roboto;
       font-weight: 700;
       font-size: 22px;
+      transition-duration: 400ms;
     }
     .description {
       font-family: $f_Roboto;
       font-weight: 700;
       font-size: 12px;
+      transition-duration: 400ms;
     }
     .detail {
       .price {
         font-family: $f_NotoSans_Bold;
         line-height: 65px;
+        transition-duration: 400ms;
       }
       .unit-detail {
         margin-left: 10px;
@@ -279,13 +302,25 @@
           font-weight: 700;
           font-size: 22px;
           line-height: 33px;
+          transition-duration: 400ms;
         }
         .per-month {
           font-family: $f_Roboto;
           font-weight: 700;
           font-size: 12px;
           line-height: 18px;
+          transition-duration: 400ms;
         }
+      }
+    }
+    &:hover {
+      background-color: $pink;
+      .title,
+      .description,
+      .price,
+      .unit,
+      .per-month {
+        color: #fff;
       }
     }
   }

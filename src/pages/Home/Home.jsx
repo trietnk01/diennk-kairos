@@ -8,10 +8,20 @@ import Accounting from "assets/images/accounting.svg";
 import HRAdmin from "assets/images/hr-admin.svg";
 import SaleAdmin from "assets/images/sales-youtube.svg";
 import VectorDown from "assets/images/vector-down.svg";
+import clsx from "clsx";
 function Home() {
   const [tabName, setTabName] = React.useState("now");
+  const [isShowLanguage, setIsShowLanguage] = React.useState(false);
+  const [languageName, setLanguageName] = React.useState("EN");
   const handleClickTab = (title) => () => {
     setTabName(title);
+  };
+  function handleClickLanguage() {
+    setIsShowLanguage(!isShowLanguage);
+  }
+  const handleChooseLanguage = (title) => () => {
+    setLanguageName(title);
+    setIsShowLanguage(false);
   };
   return (
     <div className="font-frontpage-global">
@@ -23,19 +33,29 @@ function Home() {
           <div className="big-screen flex flex-wrap justify-end mx-auto">
             <div className="header-top">
               <div className="header-wrapper flex flex-wrap justify-between items-center mx-auto">
-                <div className="header-top-item flex justify-between flex-wrap items-center">
-                  <button type="button" className="header-top-item__text text-white">
-                    EN
+                <div className="header-top-item flex justify-between flex-wrap items-center relative">
+                  <button type="button" className="header-top-item__text text-white" onClick={handleClickLanguage}>
+                    {languageName}
                   </button>
                   <img src={VectorDown} className="vector-down" />
+                  {isShowLanguage && (
+                    <div className="absolute box-language left-0 flex flex-col">
+                      <button type="button" className="language-item block w-full text-left text-white" onClick={handleChooseLanguage("EN")}>
+                        English
+                      </button>
+                      <button type="button" className="language-item block w-full text-left text-white" onClick={handleChooseLanguage("VN")}>
+                        Vietnamese
+                      </button>
+                    </div>
+                  )}
                 </div>
-                <div className="header-top-item flex justify-between flex-wrap items-center">
+                <div className="header-top-item flex justify-between flex-wrap items-center relative">
                   <button className="header-top-item__text text-white" to="/">
                     Company
                   </button>
                   <img src={VectorDown} className="vector-down" />
                 </div>
-                <div className="header-top-item flex justify-between flex-wrap items-center">
+                <div className="header-top-item flex justify-between flex-wrap items-center relative">
                   <button className="header-top-item__text text-white" to="/">
                     Partner Market Place
                   </button>
@@ -104,36 +124,60 @@ function Home() {
               </div>
               <ul className="tab-now-future m-top-100 text-center">
                 <li className="inline-block">
-                  <button type="button" className={`text-white ${tabName === "now" ? "active" : ""}`} onClick={handleClickTab("now")}>
+                  <button type="button" className={clsx("text-white", tabName === "now" ? "active" : "")} onClick={handleClickTab("now")}>
                     Now
                   </button>
                 </li>
                 <li className="inline-block">
-                  <button type="button" className={`text-white ${tabName === "future" ? "active" : ""}`} onClick={handleClickTab("future")}>
+                  <button type="button" className={clsx("text-white", tabName === "future" ? "active" : "")} onClick={handleClickTab("future")}>
                     Future
                   </button>
                 </li>
               </ul>
-              <div className="now-future-panel m-top-30 flex flex-wrap justify-between mx-auto">
-                <div className="now-future-item">
-                  <div className="now-future-item__number text-center">6</div>
-                  <div className="now-future-item__text text-white text-center">
-                    different
-                    <br />
-                    IT Software
-                    <br />
-                    Networks
+
+              {tabName === "now" ? (
+                <div className="now-future-panel m-top-30 flex flex-wrap justify-between mx-auto">
+                  <div className="now-future-item">
+                    <div className="now-future-item__number text-center">6</div>
+                    <div className="now-future-item__text text-white text-center">
+                      different
+                      <br />
+                      IT Software
+                      <br />
+                      Networks
+                    </div>
+                  </div>
+                  <div className="now-future-item">
+                    <div className="now-future-item__number text-center">32</div>
+                    <div className="now-future-item__text text-white text-center">partners</div>
+                  </div>
+                  <div className="now-future-item">
+                    <div className="now-future-item__number text-center">4</div>
+                    <div className="now-future-item__text text-white text-center">countries</div>
                   </div>
                 </div>
-                <div className="now-future-item">
-                  <div className="now-future-item__number text-center">32</div>
-                  <div className="now-future-item__text text-white text-center">partners</div>
+              ) : (
+                <div className="now-future-panel m-top-30 flex flex-wrap justify-between mx-auto">
+                  <div className="now-future-item">
+                    <div className="now-future-item__number text-center">12</div>
+                    <div className="now-future-item__text text-white text-center">
+                      different
+                      <br />
+                      IT Software
+                      <br />
+                      Networks
+                    </div>
+                  </div>
+                  <div className="now-future-item">
+                    <div className="now-future-item__number text-center">43</div>
+                    <div className="now-future-item__text text-white text-center">partners</div>
+                  </div>
+                  <div className="now-future-item">
+                    <div className="now-future-item__number text-center">56</div>
+                    <div className="now-future-item__text text-white text-center">countries</div>
+                  </div>
                 </div>
-                <div className="now-future-item">
-                  <div className="now-future-item__number text-center">4</div>
-                  <div className="now-future-item__text text-white text-center">countries</div>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -262,90 +306,58 @@ function Home() {
       </div>
       <div className="big-screen mx-auto p-top-120 p-bottom-120 background-light-green">
         <div className="wrapper-content-bottom mx-auto flex justify-between flex-wrap">
-          <div className="content-bottom-item" style={{ backgroundColor: "#fff" }}>
-            <div className="title" style={{ color: "#181949" }}>
-              Free Test
-            </div>
-            <div className="description" style={{ color: "#374754" }}>
-              Organize across all apps by hand
-            </div>
+          <a onClick={(event) => event.preventDefault()} className="content-bottom-item cursor-pointer">
+            <div className="title">Free Test</div>
+            <div className="description">Organize across all apps by hand</div>
             <div className="flex detail m-top-20 items-center">
-              <div className="price" style={{ fontSize: "64px", color: "#111111" }}>
+              <div className="price" style={{ fontSize: "64px" }}>
                 0
               </div>
               <div className="unit-detail">
-                <div className="unit" style={{ color: "#252B42" }}>
-                  $
-                </div>
-                <div className="per-month" style={{ color: "#374754" }}>
-                  Per Month
-                </div>
+                <div className="unit">$</div>
+                <div className="per-month">Per Month</div>
               </div>
             </div>
-          </div>
-          <div className="content-bottom-item" style={{ backgroundColor: "#fff" }}>
-            <div className="title" style={{ color: "#181949" }}>
-              Low Price
-            </div>
-            <div className="description" style={{ color: "#374754" }}>
-              Monthly Fixed Amount
-            </div>
+          </a>
+          <a onClick={(event) => event.preventDefault()} className="content-bottom-item cursor-pointer">
+            <div className="title">Low Price</div>
+            <div className="description">Monthly Fixed Amount</div>
             <div className="flex flex-wrap detail m-top-20 items-center">
-              <div className="price" style={{ fontSize: "36px", color: "#111111" }}>
+              <div className="price" style={{ fontSize: "36px" }}>
                 200.000
               </div>
               <div className="unit-detail 3-10">
-                <div className="unit" style={{ color: "#252B42" }}>
-                  $
-                </div>
-                <div className="per-month" style={{ color: "#374754" }}>
-                  Per Month
-                </div>
+                <div className="unit">$</div>
+                <div className="per-month">Per Month</div>
               </div>
             </div>
-          </div>
-          <div className="content-bottom-item" style={{ backgroundColor: "#fff" }}>
-            <div className="title" style={{ color: "#181949" }}>
-              Easy Using Methods
-            </div>
-            <div className="description" style={{ color: "#374754" }}>
-              Various Manuals
-            </div>
+          </a>
+          <a onClick={(event) => event.preventDefault()} className="content-bottom-item cursor-pointer">
+            <div className="title">Easy Using Methods</div>
+            <div className="description">Various Manuals</div>
             <div className="flex flex-wrap detail m-top-20 items-center">
-              <div className="price" style={{ fontSize: "36px", color: "#111111" }}>
+              <div className="price" style={{ fontSize: "36px" }}>
                 200.000
               </div>
               <div className="unit-detail">
-                <div className="unit" style={{ color: "#252B42" }}>
-                  $
-                </div>
-                <div className="per-month" style={{ color: "#374754" }}>
-                  Per Month
-                </div>
+                <div className="unit">$</div>
+                <div className="per-month">Per Month</div>
               </div>
             </div>
-          </div>
-          <div className="content-bottom-item" style={{ backgroundColor: "#E6367E" }}>
-            <div className="title" style={{ color: "#FFF" }}>
-              Verified IT Service
-            </div>
-            <div className="description" style={{ color: "#FFF" }}>
-              On sale in 4 countries
-            </div>
+          </a>
+          <a onClick={(event) => event.preventDefault()} className="content-bottom-item cursor-pointer">
+            <div className="title">Verified IT Service</div>
+            <div className="description">On sale in 4 countries</div>
             <div className="flex flex-wrap detail m-top-20 items-center">
-              <div className="price" style={{ fontSize: "36px", color: "#FFF" }}>
+              <div className="price" style={{ fontSize: "36px" }}>
                 300.000
               </div>
               <div className="unit-detail">
-                <div className="unit" style={{ color: "#FFF" }}>
-                  $
-                </div>
-                <div className="per-month" style={{ color: "#FFF" }}>
-                  Per Month
-                </div>
+                <div className="unit">$</div>
+                <div className="per-month">Per Month</div>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
       <div className="big-screen mx-auto footer">
