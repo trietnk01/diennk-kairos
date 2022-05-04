@@ -1,4 +1,5 @@
 import { PATH_NAME } from "configs";
+import { AuthProvider } from "context";
 import AuthGuard from "guards/AuthGuard";
 import GuestGuard from "guards/GuestGuard";
 import AdminMaster from "layouts/AdminMaster";
@@ -12,29 +13,31 @@ function RoutesMain() {
   return (
     <BrowserRouter>
       <Suspense fallback={<div></div>}>
-        <Routes>
-          <Route
-            path={PATH_NAME.ADMIN_LOGIN}
-            element={
-              <GuestGuard>
-                <Login />
-              </GuestGuard>
-            }
-          />
-          <Route path={PATH_NAME.ADMIN_MASTER} element={<AdminMaster />}>
-            <Route path="*" element={<NoMatchFrm />} />
+        <AuthProvider>
+          <Routes>
             <Route
-              path={PATH_NAME.ADMIN_DASHBOARD}
+              path={PATH_NAME.ADMIN_LOGIN}
               element={
-                <AuthGuard>
-                  <Dashboard />
-                </AuthGuard>
+                <GuestGuard>
+                  <Login />
+                </GuestGuard>
               }
             />
-          </Route>
-          <Route path="" element={<Home />} />
-          <Route path="*" element={<NoMatchFrm />} />
-        </Routes>
+            <Route path={PATH_NAME.ADMIN_MASTER} element={<AdminMaster />}>
+              <Route path="*" element={<NoMatchFrm />} />
+              <Route
+                path={PATH_NAME.ADMIN_DASHBOARD}
+                element={
+                  <AuthGuard>
+                    <Dashboard />
+                  </AuthGuard>
+                }
+              />
+            </Route>
+            <Route path="" element={<Home />} />
+            <Route path="*" element={<NoMatchFrm />} />
+          </Routes>
+        </AuthProvider>
       </Suspense>
     </BrowserRouter>
   );

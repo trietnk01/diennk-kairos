@@ -200,6 +200,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
   > div {
     @media only screen and (max-width: 640px) {
@@ -216,13 +218,24 @@
 }
 .background-light-gray {
   background-color: #f4f4f4;
+  @media only screen and (max-width: 640px) {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
 }
 .background-light-green {
   background-color: #f3f9ff;
+  @media only screen and (max-width: 640px) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 .cloud-service {
   padding-left: 20px;
   padding-right: 20px;
+  @media only screen and (max-width: 640px) {
+    padding-top: 40px;
+  }
   strong,
   b {
     font-family: $f_NotoSans_Bold;
@@ -346,6 +359,8 @@
       @media only screen and (max-width: 640px) {
         width: 100%;
         border-left: 0;
+        padding-top: 40px;
+        padding-bottom: 0px;
       }
       &:first-child {
         border-left: 0;

@@ -1,7 +1,8 @@
 import "assets/admin/admin-main.scss";
 import axios from "axios";
 import { API_ENDPOINT, NOTIFY_NAME, PATH_NAME, TIME_OUT } from "configs";
-import React from "react";
+import { AuthContext } from "context";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -12,25 +13,26 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+  const { setAuth } = useContext(AuthContext);
+  console.log(setAuth);
+  function onSubmit({ email, password }) {
     let msg = new Array(0);
     let typeNotify = "";
     dispatch(loadingSlice.actions.show());
     axios({
       method: "POST",
-      url: `${API_ENDPOINT}/user`,
-      data,
+      url: `${API_ENDPOINT}/member/login.php`,
+      data: {
+        email,
+        password,
+      },
       timeout: TIME_OUT,
     })
       .then(function (res) {
-        if (res && parseInt(res.status) === 200 && parseInt(res.data.checked) === 1) {
-          if (parseInt(res.data.user.status) === 1) {
-            dispatch(userSlice.actions.login(res.data.user));
-            navigate(`/${PATH_NAME.ADMIN_MASTER}/${PATH_NAME.ADMIN_DASHBOARD}`);
-          } else {
-            msg.push(NOTIFY_NAME.NOTI_PERMISSION_DENINED);
-            typeNotify = NOTIFY_NAME.NOTI_TYPE_WARNING;
-          }
+        if (res && parseInt(res.status) === 200 && res.data && res.data.token && res.data.user.USERID) {
+          setAuth({ user: res.data.user, password, accessToken: res.data.token });
+          dispatch(userSlice.actions.login(res.data.user));
+          navigate(`/${PATH_NAME.ADMIN_MASTER}/${PATH_NAME.ADMIN_DASHBOARD}`);
         } else {
           msg.push(NOTIFY_NAME.NOTI_LOGIN_FAIL);
           typeNotify = NOTIFY_NAME.NOTI_TYPE_DANGER;
@@ -52,7 +54,7 @@ function Login() {
         );
         dispatch(loadingSlice.actions.hide());
       });
-  };
+  }
   return (
     <section className="sectionLogin h-screen text-base text-white">
       <div className="xForm absolute rounded px-10 top-1/2 left-1/2 flex items-center">
