@@ -9,7 +9,6 @@ export default createSlice({
   },
   reducers: {
     login: (state, { payload }) => {
-      console.log("payload = ", payload);
       state.isLogin = true;
       state.userInfo = payload;
       localStorage.setItem(USER_LOGIN, JSON.stringify(payload));
