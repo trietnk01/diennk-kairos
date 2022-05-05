@@ -6,7 +6,7 @@ import { checkedLogin } from "redux/selector";
 
 function GuestGuard({ children }) {
   const isAuth = useSelector(checkedLogin);
-  if (isAuth) return <Navigate to={`/${PATH_NAME.ADMIN_MASTER}/${PATH_NAME.ADMIN_DASHBOARD}`} />;
+  if (isAuth) return <Navigate to={`/${PATH_NAME.ADMIN_MASTER}/${PATH_NAME.ADMIN_USER_INFO}`} />;
   return <Fragment>{children}</Fragment>;
 }
 
