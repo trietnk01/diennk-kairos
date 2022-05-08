@@ -1,10 +1,9 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
-import { checkedShowLoading } from "redux/selector";
 function LoadingSpinner() {
   const renderLoading = () => {
     let frm = null;
-    let isShow = useSelector(checkedShowLoading);
+    let isShow = useSelector((state) => state.loadingReducer.isShow);
     if (isShow) {
       frm = (
         <div className="fixed bg-screenOpacity top-0 left-0 w-screen h-screen flex items-center justify-center space-x-2">

@@ -8,8 +8,8 @@
     padding-right: 15px;
   }
   .big-screen {
-    @media only screen and (min-width: 1921px) {
-      max-width: $container_width;
+    @media only screen and (min-width: 5921px) {
+      max-width: 4000px;
     }
   }
 }

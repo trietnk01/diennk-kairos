@@ -381,3 +381,37 @@
     }
   }
 }
+.headLine {
+  font-family: $f_NotoSans_Bold;
+  font-size: 20px;
+}
+.by-line {
+  font-family: $f_NotoSans_Bold;
+  font-size: 14px;
+}
+.pull-quote {
+  width: 60%;
+  border-left: 5px solid #262768;
+  padding-left: 8px;
+  .pull-quote-italic {
+    font-family: $f_NotoSans_BoldItalic;
+    font-size: 18px;
+  }
+  .pull-quote-light {
+    font-family: $f_NotoSans_Light;
+    font-size: 14px;
+  }
+}
+.toogle-more-info {
+  border-radius: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.order-list {
+  li {
+    column-gap: 10px;
+    .order-number {
+      font-family: $f_NotoSans_Black;
+    }
+  }
+}

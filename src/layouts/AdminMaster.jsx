@@ -3,7 +3,7 @@ import { PATH_NAME } from "configs";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, Outlet, useMatch, useNavigate, useResolvedPath } from "react-router-dom";
-import userSlice from "redux/userSlice";
+import userSlice from "slices/userSlice";
 function CustomLink({ to, children, ...props }) {
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: true });

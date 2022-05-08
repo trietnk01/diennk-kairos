@@ -1,13 +1,13 @@
 import "assets/admin/admin-main.scss";
 import axios from "axios";
-import { NOTIFY_NAME, PATH_NAME, TIME_OUT } from "configs";
+import { END_POINT, NOTIFY_NAME, PATH_NAME } from "configs";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import loadingSlice from "redux/loadingSlice";
-import notifySlice from "redux/notifySlice";
-import userSlice from "redux/userSlice";
+import loadingSlice from "slices/loadingSlice";
+import notifySlice from "slices/notifySlice";
+import userSlice from "slices/userSlice";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,11 +19,11 @@ function Login() {
   function onSubmit({ username, password }) {
     let msg = new Array(0);
     let typeNotify = "";
-    dispatch(loadingSlice.actions.show());
+    dispatch(loadingSlice.actions.showLoading());
     axios({
       method: "GET",
       url: "https://6164054db55edc00175c1cc9.mockapi.io/v1/auth/1",
-      timeout: TIME_OUT,
+      timeout: END_POINT.TIME_OUT,
     })
       .then(function (res) {
         if (res && parseInt(res.status) === 200 && res.data && res.data.username) {
@@ -51,7 +51,7 @@ function Login() {
           msg.push(NOTIFY_NAME.NOTI_LOGIN_FAIL);
           typeNotify = NOTIFY_NAME.NOTI_TYPE_DANGER;
         }
-        dispatch(loadingSlice.actions.hide());
+        dispatch(loadingSlice.actions.hideLoading());
         dispatch(
           notifySlice.actions.showNotify({
             type: typeNotify,
@@ -61,12 +61,12 @@ function Login() {
       })
       .catch(function (err) {
         dispatch(
-          notifySlice.actions.showNotify({
+          notifySlice.showNotify({
             type: NOTIFY_NAME.NOTI_TYPE_DANGER,
             msg: err.message,
           })
         );
-        dispatch(loadingSlice.actions.hide());
+        dispatch(loadingSlice.actions.hideLoading());
       });
   }
   return (

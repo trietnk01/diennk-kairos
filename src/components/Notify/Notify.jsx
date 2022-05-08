@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import notifySlice from "redux/notifySlice";
-import { getMsgNotify, getTypeNotify, isShowNotify } from "redux/selector";
+import notifySlice from "slices/notifySlice";
 
 function Notify() {
   const dispatch = useDispatch();
@@ -19,9 +18,9 @@ function Notify() {
   const renderFrm = () => {
     let frm = null;
     let alertHtml = null;
-    let isShow = useSelector(isShowNotify);
-    let typeNotify = useSelector(getTypeNotify);
-    let msgNotify = useSelector(getMsgNotify);
+    let isShow = useSelector((state) => state.notifyReducer.isShow);
+    let typeNotify = useSelector((state) => state.notifyReducer.type);
+    let msgNotify = useSelector((state) => state.notifyReducer.msg);
     let elShow = "";
     let displayNotify = "hidden";
     if (isShow && Array.isArray(msgNotify) && msgNotify.length > 0) {

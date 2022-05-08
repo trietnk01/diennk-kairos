@@ -5,10 +5,10 @@ export default createSlice({
     isShow: false,
   },
   reducers: {
-    show: (state) => {
+    showLoading: (state) => {
       state.isShow = true;
     },
-    hide: (state) => {
+    hideLoading: (state) => {
       state.isShow = false;
     },
   },

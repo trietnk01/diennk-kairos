@@ -1,10 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { getUserInfo } from "redux/selector";
 
 function UserInfo() {
-  let userInfo = useSelector(getUserInfo);
-  let { createdAt } = userInfo;
+  const userInfo = useSelector((state) => state.userReducer.userInfo);
+  let { username, name, createdAt } = userInfo;
   let newDate = new Date(createdAt);
   let year = newDate.getFullYear();
   let month = newDate.getMonth() + 1;
@@ -25,7 +24,7 @@ function UserInfo() {
             <div className="w-60 flex items-center justify-end">
               <b>Username</b>
             </div>
-            <div className="grow">{userInfo.username}</div>
+            <div className="grow">{username}</div>
           </div>
         </div>
         <div className="flex flex-col w-full">
@@ -33,7 +32,7 @@ function UserInfo() {
             <div className="w-60 flex items-center justify-end">
               <b>Name</b>
             </div>
-            <div className="grow">{userInfo.name}</div>
+            <div className="grow">{name}</div>
           </div>
         </div>
         <div className="flex flex-col w-full">

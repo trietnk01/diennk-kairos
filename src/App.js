@@ -1,15 +1,15 @@
 import "assets/tailwind.css";
 import LoadingSpinner from "components/LoadingSpinner";
 import Notify from "components/Notify";
-import { USER_LOGIN } from "configs";
+import { END_POINT } from "configs";
 import React, { Fragment } from "react";
 import { useDispatch } from "react-redux";
-import userSlice from "redux/userSlice";
 import RoutesMain from "RoutesMain";
+import userSlice from "slices/userSlice";
 function App() {
   const dispatch = useDispatch();
   React.useEffect(() => {
-    let userJson = localStorage.getItem(USER_LOGIN);
+    let userJson = localStorage.getItem(END_POINT.USER_LOGIN);
     let userInfo = null;
     if (userJson) {
       userInfo = JSON.parse(userJson);

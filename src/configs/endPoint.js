@@ -1,5 +1,7 @@
-export const URL_SERVER = process.env.REACT_APP_URL;
-export const API_ENDPOINT = URL_SERVER + "/api";
-export const FOLDER_IMAGE = "upload";
-export const USER_LOGIN = "userlogin";
-export const TIME_OUT = 5000;
+export const END_POINT = {
+  URL_SERVER: process.env.REACT_APP_URL,
+  API_ENDPOINT: process.env.REACT_APP_URL + "/api",
+  FOLDER_IMAGE: "upload",
+  USER_LOGIN: "userlogin",
+  TIME_OUT: 5000,
+};
