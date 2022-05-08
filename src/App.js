@@ -17,7 +17,7 @@ function App() {
         let expiryV1 = userInfo.expiry;
         let expiryV2 = Date.now();
         let remainedMilisecond = expiryV2 - expiryV1;
-        if (remainedMilisecond > 1 * 60 * 1000) {
+        if (remainedMilisecond > 1 * 1440 * 1000) {
           dispatch(userSlice.actions.logout());
         } else {
           dispatch(userSlice.actions.login({ ...userInfo, expiry: Date.now() }));

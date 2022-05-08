@@ -31,6 +31,7 @@ function RoutesMain() {
                 </AuthGuard>
               }
             />
+            <Route path="*" element={<NoMatchFrm />} />
           </Route>
           <Route path="" element={<Home />} />
           <Route path="*" element={<NoMatchFrm />} />
