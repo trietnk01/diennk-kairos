@@ -1,13 +1,12 @@
+import { loginUser } from "apis/user.api";
 import "assets/admin/admin-main.scss";
-import axios from "axios";
-import { END_POINT, NOTIFY_NAME, PATH_NAME } from "configs";
+import { NOTIFY_NAME, PATH_NAME } from "configs";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import loadingSlice from "slices/loadingSlice";
+import authService from "services/authService";
 import notifySlice from "slices/notifySlice";
-import userSlice from "slices/userSlice";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,58 +15,40 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  function onSubmit({ username, password }) {
+  async function onSubmit({ email, password }) {
     let msg = new Array(0);
     let typeNotify = "";
-    dispatch(loadingSlice.actions.showLoading());
-    axios({
-      method: "GET",
-      url: "https://6164054db55edc00175c1cc9.mockapi.io/v1/auth/1",
-      timeout: END_POINT.TIME_OUT,
-    })
-      .then(function (res) {
-        if (res && parseInt(res.status) === 200 && res.data && res.data.username) {
-          let checkedUserNamePassword = true;
-          if (username !== res.data.username) {
-            checkedUserNamePassword = false;
-            msg.push(NOTIFY_NAME.NOTI_WRONG_USERNAME);
-            typeNotify = NOTIFY_NAME.NOTI_TYPE_WARNING;
-          }
-          if (password !== res.data.password) {
-            checkedUserNamePassword = false;
-            msg.push(NOTIFY_NAME.NOTI_WRONG_PASSWORD);
-            typeNotify = NOTIFY_NAME.NOTI_TYPE_WARNING;
-          }
-          if (checkedUserNamePassword) {
-            dispatch(
-              userSlice.actions.login({
-                ...res.data,
-                expiry: Date.now(),
-              })
-            );
-            navigate(`/${PATH_NAME.ADMIN_MASTER}/${PATH_NAME.ADMIN_USER_INFO}`);
-          }
-        } else {
-          msg.push(NOTIFY_NAME.NOTI_LOGIN_FAIL);
-          typeNotify = NOTIFY_NAME.NOTI_TYPE_DANGER;
-        }
-        dispatch(loadingSlice.actions.hideLoading());
-        dispatch(
-          notifySlice.actions.showNotify({
-            type: typeNotify,
-            msg,
-          })
-        );
-      })
-      .catch(function (err) {
-        dispatch(
-          notifySlice.showNotify({
-            type: NOTIFY_NAME.NOTI_TYPE_DANGER,
-            msg: err.message,
-          })
-        );
-        dispatch(loadingSlice.actions.hideLoading());
-      });
+    try {
+      const frmData = new FormData();
+      frmData.append("email", email);
+      frmData.append("password", password);
+      const bodyData = {
+        email,
+        password,
+      };
+      const res = await loginUser("/api/user/login", bodyData);
+      if (res && res.data && res.data.isSucess === true && res.data.token) {
+        const accessToken = res.data.token;
+        authService.setAccessToken(accessToken);
+        navigate(`/${PATH_NAME.ADMIN_MASTER}/${PATH_NAME.ADMIN_USER_INFO}`);
+      } else {
+        msg.push(NOTIFY_NAME.NOTI_LOGIN_FAIL);
+        typeNotify = NOTIFY_NAME.NOTI_TYPE_DANGER;
+      }
+      dispatch(
+        notifySlice.actions.showNotify({
+          type: typeNotify,
+          msg,
+        })
+      );
+    } catch (err) {
+      dispatch(
+        notifySlice.actions.showNotify({
+          type: NOTIFY_NAME.NOTI_TYPE_DANGER,
+          msg: err.message,
+        })
+      );
+    }
   }
   return (
     <section className="sectionLogin h-screen text-base text-white">
@@ -77,10 +58,10 @@ function Login() {
           <form className="frmLogin" onSubmit={handleSubmit(onSubmit)}>
             <div className="relative mb-2">
               <div>
-                <input type="text" className="txtInput font-light outline-0 border-0 rounded px-2.5 py-2.5 w-full bg-transparent" {...register("username", { required: true })} />
+                <input type="text" className="txtInput font-light outline-0 border-0 rounded px-2.5 py-2.5 w-full bg-transparent" {...register("email", { required: true })} />
                 <i className="iconLogin absolute fa fa-envelope-o" aria-hidden="true"></i>
               </div>
-              {errors.username && <span className="text-red-500">Username is required</span>}
+              {errors.email && <span className="text-red-500">Email is required</span>}
             </div>
             <div className="relative mb-2">
               <div>

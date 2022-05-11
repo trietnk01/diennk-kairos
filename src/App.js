@@ -2,10 +2,12 @@ import "assets/tailwind.css";
 import LoadingSpinner from "components/LoadingSpinner";
 import Notify from "components/Notify";
 import { END_POINT } from "configs";
+
 import React, { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import RoutesMain from "RoutesMain";
 import userSlice from "slices/userSlice";
+
 function App() {
   const dispatch = useDispatch();
   React.useEffect(() => {
