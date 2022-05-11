@@ -4,6 +4,8 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "redux/store";
 import reportWebVitals from "reportWebVitals";
+import initRequest from "services/initRequest";
+initRequest();
 ReactDOM.render(
   <Provider store={store}>
     <App />

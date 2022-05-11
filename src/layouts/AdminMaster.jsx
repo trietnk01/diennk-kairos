@@ -27,8 +27,8 @@ function AdminMaster() {
     if (!accessToken) return;
     async function checkedAuthUser() {
       try {
-        console.log("accessToken = ", accessToken);
         const res = await authenticated("/auth", accessToken);
+        console.log("res = ", res);
         const data = res.data.user;
         if (!data.user) {
           navigate(`/${PATH_NAME.ADMIN_LOGIN}`);
@@ -36,6 +36,7 @@ function AdminMaster() {
           return;
         }
       } catch (err) {
+        console.log("err = ", err);
         if (!err.data.isSuccess) {
           navigate(`/${PATH_NAME.ADMIN_LOGIN}`);
           authService.clearStorage();
