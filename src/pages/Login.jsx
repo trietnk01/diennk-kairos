@@ -26,7 +26,7 @@ function Login() {
         email,
         password,
       };
-      const res = await loginUser("/api/user/login", bodyData);
+      const res = await loginUser("/user/login", bodyData);
       if (res && res.data && res.data.isSucess === true && res.data.token) {
         const accessToken = res.data.token;
         authService.setAccessToken(accessToken);

@@ -1,8 +1,10 @@
+import { authenticated } from "apis/user.api";
 import "assets/admin/admin-main.scss";
 import { PATH_NAME } from "configs";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link, Outlet, useMatch, useNavigate, useResolvedPath } from "react-router-dom";
+import authService from "services/authService";
 import userSlice from "slices/userSlice";
 function CustomLink({ to, children, ...props }) {
   let resolved = useResolvedPath(to);
@@ -20,12 +22,36 @@ function CustomLink({ to, children, ...props }) {
 function AdminMaster() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  useEffect(() => {
+    const accessToken = authService.getAccessToken();
+    if (!accessToken) return;
+    async function checkedAuthUser() {
+      try {
+        console.log("accessToken = ", accessToken);
+        const res = await authenticated("/auth", accessToken);
+        const data = res.data.user;
+        if (!data.user) {
+          navigate(`/${PATH_NAME.ADMIN_LOGIN}`);
+          authService.clearStorage();
+          return;
+        }
+      } catch (err) {
+        if (!err.data.isSuccess) {
+          navigate(`/${PATH_NAME.ADMIN_LOGIN}`);
+          authService.clearStorage();
+        }
+      }
+    }
+    checkedAuthUser();
+  }, []);
+
   function handleLogout(event) {
     event.preventDefault();
-    localStorage.clear();
+
     dispatch(userSlice.actions.logout());
     navigate(`/${PATH_NAME.ADMIN_LOGIN}`);
   }
+  console.log("AdminMaster return");
   return (
     <div className="text-base text-black">
       <nav className="fixed w-64 h-full left-0 bg-current">

@@ -4,3 +4,14 @@ export const loginUser = async (url, bodyData = {}) => {
     showLoading: true,
   });
 };
+export const authenticated = async (url, accessToken) => {
+  return http_request.post(
+    url,
+    {},
+    {
+      headers: {
+        "x-auth-token": accessToken,
+      },
+    }
+  );
+};

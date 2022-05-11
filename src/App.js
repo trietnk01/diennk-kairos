@@ -10,7 +10,7 @@ import userSlice from "slices/userSlice";
 
 function App() {
   const dispatch = useDispatch();
-  React.useEffect(() => {
+  /* React.useEffect(() => {
     let userJson = localStorage.getItem(END_POINT.USER_LOGIN);
     let userInfo = null;
     if (userJson) {
@@ -26,7 +26,7 @@ function App() {
         }
       }
     }
-  }, []);
+  }, []); */
   return (
     <Fragment>
       <RoutesMain></RoutesMain>
