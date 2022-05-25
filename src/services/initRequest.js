@@ -1,41 +1,56 @@
 import axios from "axios";
-import authService from "./authService";
-export const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_ENDPOINT,
+import { END_POINT } from "configs";
+import store from "redux/store";
+import loadingSlice from "slices/loadingSlice";
+import auth_service from "./authService";
+const item_axios = {
+  baseURL: END_POINT.API_ENDPOINT,
   timeout: 5000,
-  showLoading: false,
-});
-export default function initRequest() {
-  console.log("initRequest");
-  axiosInstance.interceptors.request.use(
+  showSpinner: false,
+};
+export const axios_instance = axios.create(item_axios);
+function initRequest() {
+  let requestCount = 0;
+  function decreaseRequestCount() {
+    requestCount = requestCount - 1;
+    if (requestCount === 0) {
+      store.dispatch(loadingSlice.actions.hideSpinner());
+    }
+  }
+  axios_instance.interceptors.request.use(
     function (config) {
-      console.log("axiosInstance.interceptors.request.use");
-      const accessToken = authService.getAccessToken();
+      if (config.showSpinner) {
+        requestCount++;
+        store.dispatch(loadingSlice.actions.showSpinner());
+      }
+      const accessToken = auth_service.getAccessToken();
       if (accessToken) {
         config.headers["x-auth-token"] = accessToken;
       }
       return config;
     },
-    function (error) {
-      console.log("axiosInstance.interceptors.request.error");
-      // Do something with request error
-      return Promise.reject(error);
+    function (err) {
+      if (err.config.showSpinner) {
+        decreaseRequestCount();
+      }
+      return Promise.reject(err);
     }
   );
 
   // Add a response interceptor
-  axiosInstance.interceptors.response.use(
-    function (response) {
-      console.log("axiosInstance.interceptors.response.use");
-      // Any status code that lie within the range of 2xx cause this function to trigger
-      // Do something with response data
-      return response;
+  axios_instance.interceptors.response.use(
+    function (res) {
+      if (res.config.showSpinner) {
+        decreaseRequestCount();
+      }
+      return res;
     },
-    function (error) {
-      console.log("axiosInstance.interceptors.response.error");
-      // Any status codes that falls outside the range of 2xx cause this function to trigger
-      // Do something with response error
-      return Promise.reject(error.response);
+    function (err) {
+      if (err.config.showSpinner) {
+        decreaseRequestCount();
+      }
+      return Promise.reject(err.response);
     }
   );
 }
+export default initRequest;

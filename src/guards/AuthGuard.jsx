@@ -1,11 +1,10 @@
 import { PATH_NAME } from "configs";
 import React, { Fragment } from "react";
 import { Navigate } from "react-router-dom";
-import authService from "services/authService";
+import auth_service from "services/authService";
 
 function AuthGuard({ children }) {
-  const isLogin = authService.isAuthenticated();
-  console.log("AuthGuard = ", isLogin);
+  const isLogin = auth_service.isAuthenticated();
   if (!isLogin) return <Navigate to={`/${PATH_NAME.ADMIN_LOGIN}`} />;
   return <Fragment>{children}</Fragment>;
 }

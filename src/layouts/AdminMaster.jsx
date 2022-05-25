@@ -4,7 +4,7 @@ import { PATH_NAME } from "configs";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link, Outlet, useMatch, useNavigate, useResolvedPath } from "react-router-dom";
-import authService from "services/authService";
+import auth_service from "services/authService";
 import userSlice from "slices/userSlice";
 function CustomLink({ to, children, ...props }) {
   let resolved = useResolvedPath(to);
@@ -20,26 +20,28 @@ function CustomLink({ to, children, ...props }) {
   );
 }
 function AdminMaster() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
-    const accessToken = authService.getAccessToken();
-    if (!accessToken) return;
+    const accessToken = auth_service.getAccessToken();
+    if (!accessToken) {
+      auth_service.clearStorage();
+      return;
+    }
     async function checkedAuthUser() {
       try {
         const res = await authenticated("/auth", accessToken);
-        console.log("res = ", res);
-        const data = res.data.user;
-        if (!data.user) {
+        if (!res.data.isSuccess) {
+          auth_service.clearStorage();
           navigate(`/${PATH_NAME.ADMIN_LOGIN}`);
-          authService.clearStorage();
           return;
         }
+        dispatch(userSlice.actions.setUser(res.data.user));
       } catch (err) {
-        console.log("err = ", err);
-        if (!err.data.isSuccess) {
+        if (err.status !== 200) {
+          auth_service.clearStorage();
           navigate(`/${PATH_NAME.ADMIN_LOGIN}`);
-          authService.clearStorage();
+          return;
         }
       }
     }
@@ -48,11 +50,9 @@ function AdminMaster() {
 
   function handleLogout(event) {
     event.preventDefault();
-
-    dispatch(userSlice.actions.logout());
+    auth_service.clearStorage();
     navigate(`/${PATH_NAME.ADMIN_LOGIN}`);
   }
-  console.log("AdminMaster return");
   return (
     <div className="text-base text-black">
       <nav className="fixed w-64 h-full left-0 bg-current">

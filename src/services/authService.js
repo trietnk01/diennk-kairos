@@ -17,5 +17,5 @@ class AuthService {
     return checked;
   };
 }
-const authService = new AuthService();
-export default authService;
+const auth_service = new AuthService();
+export default auth_service;

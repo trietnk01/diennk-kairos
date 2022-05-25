@@ -5,7 +5,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import authService from "services/authService";
+import auth_service from "services/authService";
 import notifySlice from "slices/notifySlice";
 function Login() {
   const dispatch = useDispatch();
@@ -19,9 +19,6 @@ function Login() {
     let msg = new Array(0);
     let typeNotify = "";
     try {
-      const frmData = new FormData();
-      frmData.append("email", email);
-      frmData.append("password", password);
       const bodyData = {
         email,
         password,
@@ -29,7 +26,9 @@ function Login() {
       const res = await loginUser("/user/login", bodyData);
       if (res && res.data && res.data.isSucess === true && res.data.token) {
         const accessToken = res.data.token;
-        authService.setAccessToken(accessToken);
+        auth_service.setAccessToken(accessToken);
+        msg.push("Login successfully");
+        typeNotify = NOTIFY_NAME.NOTI_TYPE_SUCCESS;
         navigate(`/${PATH_NAME.ADMIN_MASTER}/${PATH_NAME.ADMIN_USER_INFO}`);
       } else {
         msg.push(NOTIFY_NAME.NOTI_LOGIN_FAIL);

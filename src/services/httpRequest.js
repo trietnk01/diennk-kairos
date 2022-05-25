@@ -1,7 +1,8 @@
-import { axiosInstance } from "./initRequest";
+import { axios_instance } from "./initRequest";
+
 class HttpRequest {
   constructor() {
-    this.api = axiosInstance;
+    this.api = axios_instance;
   }
   async get(url, config) {
     return this.api.get(url, config);
