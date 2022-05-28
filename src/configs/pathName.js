@@ -4,4 +4,5 @@ export const PATH_NAME = {
   ADMIN_MASTER: "admin-master",
   ADMIN_DASHBOARD: "dashboard",
   ADMIN_USER_INFO: "user-info",
+  ADMIN_IMMER_TUTORIAL: "immer-tutorial",
 };

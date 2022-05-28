@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 const Home = lazy(() => import("pages/Home"));
 const Login = lazy(() => import("pages/Login"));
 const UserInfo = lazy(() => import("pages/UserInfo"));
+const ImmerTutorial = lazy(() => import("pages/ImmerTutorial"));
 const NoMatchFrm = lazy(() => import("pages/NoMatchFrm"));
 function RoutesMain() {
   return (
@@ -28,6 +29,14 @@ function RoutesMain() {
               element={
                 <AuthGuard>
                   <UserInfo />
+                </AuthGuard>
+              }
+            />
+            <Route
+              path={PATH_NAME.ADMIN_IMMER_TUTORIAL}
+              element={
+                <AuthGuard>
+                  <ImmerTutorial />
                 </AuthGuard>
               }
             />
